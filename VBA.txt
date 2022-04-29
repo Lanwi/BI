@@ -1,0 +1,734 @@
+Sub CorrectionNull()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_is_code_insee_verified").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range("A2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value = "null" Or IsEmpty(cell.Value) Then cell.Style = "Insatisfaisant"
+Next cell
+End Sub
+
+Sub columnA()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("nom_amenageur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> UCase(cell.Value) And cell.Value <> "null" Then cell.Style = "Neutre"
+Next cell
+
+End Sub
+
+Sub columnB()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("siren_amenageur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Len(cell.Value) <> 9 Or IsNumeric(cell.Value) = False Then cell.Style = "Insatisfaisant"
+Next cell
+End Sub
+
+Sub columnC()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("contact_amenageur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If isEmail(cell.Value) = False Then cell.Style = "Insatisfaisant"
+Next cell
+End Sub
+
+Sub columnD()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("nom_operateur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> UCase(cell.Value) And cell.Value <> "null" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnE()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("contact_operateur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If isEmail(cell.Value) = False Then cell.Style = "Insatisfaisant"
+Next cell
+End Sub
+
+Sub columnF()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("telephone_operateur").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False And Left(cell, 1) <> "0" Then cell.Style = "Insatisfaisant"
+    If Len(cell.Value) <> 10 And cell.Value <> "null" And Left(cell, 1) <> "0" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnG()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("nom_enseigne").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> UCase(cell.Value) And cell.Value <> "null" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnH()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("id_station_itinerance").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "Non concernÃ©" And Left(cell, 1) <> "F" And Left(cell, 2) <> "R" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnI()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("id_station_local").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+
+Next cell
+End Sub
+
+Sub columnJ()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("nom_station").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> UCase(cell.Value) And cell.Value <> "null" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnK()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("implantation_station").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "Voirie" And cell.Value <> "Parking public" And cell.Value <> "Parking privÃ© rÃ©servÃ© Ã  la clientÃ¨le" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnL()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("adresse_station").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(Left(cell, 1)) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnM()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("code_insee_commune").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Len(cell.Value) <> 5 Or IsNumeric(cell.Value) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnN()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("coordonneesXY").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Left(cell, 1) <> "[" Or Right(cell, 1) <> "]" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnO()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("nbre_pdc").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnP()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("id_pdc_itinerance").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+
+Next cell
+End Sub
+
+Sub columnQ()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("id_pdc_local").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> UCase(cell.Value) And cell.Value <> "Non concernÃ©" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnR()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("puissance_nominale").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnS()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("prise_type_ef").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnT()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("prise_type_2").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnU()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("prise_type_combo_ccs").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnV()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("prise_type_chademo").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnW()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("prise_type_autre").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnX()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("gratuit").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnY()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("paiement_acte").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnZ()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("paiement_cb").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAA()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("paiement_autre").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAB()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("tarification").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+
+Next cell
+End Sub
+
+Sub columnAC()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("condition_acces").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "AccÃ¨s libre" And cell.Value <> "AccÃ¨s rÃ©servÃ©" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAD()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("reservation").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAE()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("horaires").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False And Len(cell.Value) <> 5 Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAF()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("accessibilite_pmr").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "AccessibilitÃ© inconnue" And cell.Value <> "Accessible mais non rÃ©servÃ© PMR" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAG()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("restriction_gabarit").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "Aucune Restriction" And cell.Value <> "Inconnu" And IsNumeric(cell.Value) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAH()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("station_deux_roues").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "true" And cell.Value <> "false" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAI()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("raccordement").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "Direct" And cell.Value <> "Indirect" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAJ()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("num_pdl").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "Inconnu" And IsNumeric(cell.Value) = False And cell.Value <> "null" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAK()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("date_mise_en_service").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False And Len(cell.Value) <> 5 Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAL()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("observations").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAM()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("date_maj").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(cell.Value) = False And Len(cell.Value) <> 5 Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAN()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("last_modified").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsDate(cell.Value) Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAO()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("datagouv_dataset_id").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If IsNumeric(Left(cell, 1)) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAP()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("datagouv_resource_id").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Len(cell.Value) > 40 Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAQ()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("datagouv_organization_or_owner").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value = UCase(cell.Value) Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAR()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_longitude").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+
+Next cell
+End Sub
+
+Sub columnAS()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_latitude").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+
+Next cell
+End Sub
+
+Sub columnAT()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_code_postal").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Len(cell.Value) <> 5 Or IsNumeric(cell.Value) = False Then cell.Style = "Neutre"
+Next cell
+End Sub
+Sub columnAU()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_commune").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If Left(cell, 1) <> UCase(Left(cell, 1)) Then cell.Style = "Neutre"
+    If IsNumeric(cell.Value) Then cell.Style = "Insatisfaisant"
+Next cell
+End Sub
+
+Sub columnAV()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_is_lon_lat_correct").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "True" And cell.Value <> "False" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub columnAW()
+Dim myRange As Range
+Dim cell As Range
+Find = Range("A1", "AAA1").Find("consolidated_is_code_insee_verified").Column
+e = Cells(Rows.Count, Find).End(xlUp).Row
+ColumnLetter = Split(Cells(1, Find).Address, "$")(1)
+Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+For Each cell In myRange
+    If cell.Value <> "True" And cell.Value <> "False" Then cell.Style = "Neutre"
+Next cell
+End Sub
+
+Sub tabcorrection()
+    Dim Tname As Variant, Tinsap As Variant, Tneup As Variant, Tcorec As Variant
+    Dim columnS As Integer
+    Dim Line As Range
+    Tname = Array()
+    Tinsap = Array()
+    Tneup = Array()
+    Tcorec = Array()
+    
+    colnumber = Cells(1, "A").End(xlToRight).Column
+    
+    ReDim Preserve Tname(colnumber + 1)
+    ReDim Preserve Tinsap(colnumber + 1)
+    ReDim Preserve Tneup(colnumber + 1)
+    ReDim Preserve Tcorec(colnumber + 1)
+    
+    
+    For columnS = 1 To colnumber Step 1
+        e = Cells(Rows.Count, columnS).End(xlUp).Row
+        ColumnLetter = Split(Cells(1, columnS).Address, "$")(1)
+        Set myRange = Range(ColumnLetter & "2:" & ColumnLetter & e)
+        
+        nbneup = 0
+        nbInsat = 0
+        For Each Line In myRange
+            If Line.Style = "Insatisfaisant" Then
+                nbInsat = nbInsat + 1
+            
+            End If
+            
+            If Line.Style = "Neutre" Then
+                nbneup = nbneup + 1
+            End If
+                  
+        Next Line
+        Tinsap(columnS) = (nbInsat / (e - 1)) * 100
+        Tneup(columnS) = ((e - 1 - nbInsat) / (e - 1)) * 100
+        Tname(columnS) = Cells(1, columnS).Value
+        Tcorec(columnS) = ((e - 1 - nbneup - nbInsat) / (e - 1)) * 100
+        
+    Next columnS
+    
+    Nouvelle_Feuille "TabAndGraphs"
+    Graphs Tinsap, Tname, "% inutilisable", "tab1"
+    Graphs Tneup, Tname, "% utilisable", "tab2"
+    Graphs Tcorec, Tname, "% correct", "tab3"
+    
+End Sub
+Sub Graphs(Tperc, Tname, tabname, graphname)
+
+
+'ActiveSheet.Shapes.AddChart2(381, xlSunburst).Name = graphname
+ActiveSheet.Shapes.AddChart2(227, xlLine).Name = graphname
+ActiveSheet.Shapes(graphname).Select
+ActiveChart.SeriesCollection.NewSeries
+ActiveChart.FullSeriesCollection(1).Name = tabname
+ActiveChart.FullSeriesCollection(1).Values = Tperc
+ActiveChart.FullSeriesCollection(1).XValues = Tname
+
+End Sub
+
+Sub Nouvelle_Feuille(SheetName)
+
+'existance de la feuill du projet
+    sheetExists = False
+    
+    For Each Sheet In Worksheets
+        If SheetName = Sheet.Name Then
+            sheetExists = True
+            Exit For
+        End If
+    Next Sheet
+    If sheetExists Then
+    
+    Else
+        Sheets.Add.Name = SheetName
+    End If
+    
+End Sub
+
+Sub CorrectionGeneral()
+Call Module1.CorrectionNull
+Call Module1.columnA
+Call Module1.columnB
+Call Module1.columnC
+Call Module1.columnD
+Call Module1.columnE
+Call Module1.columnF
+Call Module1.columnG
+Call Module1.columnH
+Call Module1.columnI
+Call Module1.columnJ
+Call Module1.columnK
+Call Module1.columnL
+Call Module1.columnM
+Call Module1.columnN
+Call Module1.columnO
+Call Module1.columnP
+Call Module1.columnQ
+Call Module1.columnR
+Call Module1.columnS
+Call Module1.columnT
+Call Module1.columnU
+Call Module1.columnV
+Call Module1.columnW
+Call Module1.columnX
+Call Module1.columnY
+Call Module1.columnZ
+Call Module1.columnAA
+Call Module1.columnAB
+Call Module1.columnAC
+Call Module1.columnAD
+Call Module1.columnAE
+Call Module1.columnAF
+Call Module1.columnAG
+Call Module1.columnAH
+Call Module1.columnAI
+Call Module1.columnAJ
+Call Module1.columnAK
+Call Module1.columnAL
+Call Module1.columnAM
+Call Module1.columnAN
+Call Module1.columnAO
+Call Module1.columnAP
+Call Module1.columnAQ
+Call Module1.columnAR
+Call Module1.columnAS
+Call Module1.columnAT
+Call Module1.columnAU
+Call Module1.columnAV
+Call Module1.columnAW
+End Sub
